@@ -1,0 +1,28 @@
+version: '3'
+volumes:
+  climatemeter-sqlserver-data:
+    external: true
+  climatemeter-consul-data:
+    external: true
+services:
+  consul:
+    image: consul
+    container_name: climatemeter-consul
+    ports:
+      - 8500:8500
+    environment:
+      CONSUL_LOCAL_CONFIG: '{"bootstrap": true, "server": true, "ui": true}'
+    command: agent -server -bind 127.0.0.1 -client 0.0.0.0
+    volumes:
+      - climatemeter-consul-data:/consul/data
+  sqlserver:
+    image: microsoft/mssql-server-linux:2017-GA
+    container_name: climatemeter-sqlserver
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: sqlUser!
+      MSSQL_PID: Developer
+    volumes:
+      - climatemeter-sqlserver-data:/var/opt/mssql
