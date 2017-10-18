@@ -16,6 +16,5 @@ sudo docker run --name consul \
     -e VIRTUAL_PORT=8500 \
     -e LETSENCRYPT_HOST=consul.darkxahtep.co.ua \
     -e LETSENCRYPT_EMAIL=darkxahtep@gmail.com \
-    -e LETSENCRYPT_TEST=true \
     --restart always -d \
     consul agent -server -bind 127.0.0.1 -client 0.0.0.0
