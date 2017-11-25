@@ -7,5 +7,4 @@ sudo docker run --name portainer \
     -e VIRTUAL_PORT=9000 \
     -e LETSENCRYPT_HOST=docker.darkxahtep.co.ua \
     -e LETSENCRYPT_EMAIL=darkxahtep@gmail.com \
-    -e LETSENCRYPT_TEST=true \
     --restart always -d portainer/portainer
