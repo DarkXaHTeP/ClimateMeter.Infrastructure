@@ -1,0 +1,35 @@
+version: '3'
+volumes:
+  climatemeter-consul-data:
+    external: true
+  climatemeter-portainer-data:
+    external: true
+services:
+  consul:
+    image: consul
+    container_name: climatemeter-consul
+    ports:
+      - 8500:8500
+    environment:
+    command: agent -server -bind 127.0.0.1 -client 0.0.0.0 -ui
+    volumes:
+      - climatemeter-consul-data:/consul/data
+  portainer:
+    image: portainer/portainer
+    container_name: climatemeter-portainer
+    ports:
+      - 9000:9000
+    command: --no-auth
+    volumes:
+      - climatemeter-portainer-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+  device:
+    image: darkxahtep/climatemeter-device-net
+    container_name: climatemeter-device
+    environment:
+      - DEVICE_DeviceName: ${DEVICE_DeviceName}
+      - DEVICE_DeviceDescription: ${DEVICE_DeviceDescription}
+    links:
+      - consul
+    depends_on:
+      - consul
