@@ -10,7 +10,7 @@ services:
     container_name: climatemeter-consul
     ports:
       - 8500:8500
-    command: agent -server -bind 127.0.0.1 -client 0.0.0.0 -ui
+    command: agent -server -bind 127.0.0.1 -client 0.0.0.0 -ui --data-dir=/consul/data
     restart: always
     volumes:
       - climatemeter-consul-data:/consul/data
