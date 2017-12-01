@@ -30,6 +30,9 @@ services:
     environment:
       DEVICE_DeviceName: "$DEVICE_DeviceName"
       DEVICE_DeviceDescription: "$DEVICE_DeviceDescription"
+    privileged: true
+    devices:
+      - /dev/mem:/dev/mem
     restart: always    
     links:
       - consul
