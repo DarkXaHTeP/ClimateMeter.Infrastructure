@@ -29,8 +29,8 @@ services:
     image: darkxahtep/climatemeter-device-net
     container_name: climatemeter-device
     environment:
-      - DEVICE_DeviceName: ${DEVICE_DeviceName}
-      - DEVICE_DeviceDescription: ${DEVICE_DeviceDescription}
+      - DEVICE_DeviceName: "$DEVICE_DeviceName"
+      - DEVICE_DeviceDescription: "$DEVICE_DeviceDescription"
     restart: always    
     links:
       - consul
