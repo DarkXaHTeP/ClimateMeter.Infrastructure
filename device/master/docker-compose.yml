@@ -12,6 +12,7 @@ services:
       - 8500:8500
     environment:
     command: agent -server -bind 127.0.0.1 -client 0.0.0.0 -ui
+    restart: always
     volumes:
       - climatemeter-consul-data:/consul/data
   portainer:
@@ -20,6 +21,7 @@ services:
     ports:
       - 9000:9000
     command: --no-auth
+    restart: always    
     volumes:
       - climatemeter-portainer-data:/data
       - /var/run/docker.sock:/var/run/docker.sock
@@ -29,6 +31,7 @@ services:
     environment:
       - DEVICE_DeviceName: ${DEVICE_DeviceName}
       - DEVICE_DeviceDescription: ${DEVICE_DeviceDescription}
+    restart: always    
     links:
       - consul
     depends_on:
