@@ -1,2 +1,2 @@
-export DEVICE_DeviceName={name} 
-export DEVICE_DeviceDescription={description}
+export DEVICE_DeviceName="{name}"
+export DEVICE_DeviceDescription="{description}"
