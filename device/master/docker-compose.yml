@@ -30,6 +30,7 @@ services:
     environment:
       DEVICE_DeviceName: "$DEVICE_DeviceName"
       DEVICE_DeviceDescription: "$DEVICE_DeviceDescription"
+      CONSUL_HOST: consul
     privileged: true
     devices:
       - /dev/mem:/dev/mem
